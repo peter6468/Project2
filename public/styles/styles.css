@@ -1,3 +1,17 @@
-.list-group-item {
-  line-height: 2.5;
+/* Google Fonts */
+*{
+  font-family: 'Mukta', sans-serif;
+}
+
+
+/* Bootstrap Edits */
+.jumbotron{
+  background-color: #fff;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+  padding-right: .5rem;
+  padding-left: .5rem;
+  font-size: 29px;
+  color: #000;
 }
