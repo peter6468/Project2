@@ -11,12 +11,13 @@ var db = {};
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+  var sequelize = new Sequelize({
+    database: config.database,
+    username: config.username,
+    password: config.password,
+    host: config.host,
+    dialect: config.dialect 
+  });
 }
 
 fs.readdirSync(__dirname)
@@ -27,6 +28,7 @@ fs.readdirSync(__dirname)
   })
   .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));
+    console.log(model);
     db[model.name] = model;
   });
 
