@@ -4,10 +4,40 @@ body {
     background-color: #eae6Da;
  }
 
+ .card {
+   background-color:  #eae6Da;
+   border: 0px;
+   left: 30px;
+   font-family: sans-serif;
+   font-size: 17px;
+  }
+ 
+
 article, aside, figure, footer, header, hgroup,
 menu, nav, section { display: block; }
 
 #page-wrap { width: 960px; margin: 80px auto; }
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th:empty {
+  border: 0;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
 
 /*CSS PAGINATION*/
 .paging-nav {
@@ -29,3 +59,17 @@ menu, nav, section { display: block; }
     background: #187ed5;
     font-weight: bold;
   }
+
+
+
+  
+
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
