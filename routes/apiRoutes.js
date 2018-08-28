@@ -1,24 +1,34 @@
 var db = require("../models");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+module.exports = (app) => {
+  // Get all groups
+  app.get("/api/group", (req, res) => {
+    db.user_group.findAll({}).then(data => {
+      res.json(data);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new group
+  app.post("/api/group", (req, res) => {
+    db.user_group.create(req.body).then(data => {
+      res.json(data);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // get group by id
+  app.get("/api/group/:groupid", (req, res) => {
+    db.user_group.findOne({ where: { id: req.params.groupid } }).then(data => {
+      res.json(data);
+    });
+  });
+
+  app.get("/api/group/:groupid/user", (req, res) => {
+    db.user_group.findById(req.params.groupid, {
+      include: [{
+        model: User
+      }]
+    }).then(data => {
+      res.json(data);
     });
   });
 };
