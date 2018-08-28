@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>| FLTV</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+
+    <style>
+        body {
+            background-color: #eae6Da;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">FLTV</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                                        <ul class="navbar-nav ml-auto">
+                                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                                <ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="contact.html">Contact</a>
+                                                    </li>
+                                                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                                                        <ul class="navbar-nav ml-auto">
+                                                            <li class="nav-item active">
+                                                                <a class="nav-link" href="blog.html">Blog</a>
+                                                            </li>
+                                                        </ul>
+                                                </ul>
+                                        </ul>
+                                </ul>
+                        </ul>
+                </ul>
+                </div>
+                </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3"></h1>
+
+        <div class="row">
+
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+             <hr>
+
+                <!-- Post Content -->
+                <p class="lead"><p>
+
+                <hr>
+
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Leave a Comment:</h5>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <textarea id="blogtext" class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" id="blogbutton" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Comment with nested comments -->
+                <div class="media mt-4">
+                    <img class="d-flex mr-3 rounded-circle">
+                    <div class="media-body">
+                        <h5 class="mt-0">Some Guy</h5>
+                        No more guesswork with what the opitmal team will be
+                    </div>
+                </div>
+
+                <div class="media mt-4">
+                    <img class="d-flex mr-3 rounded-circle">
+                    <div class="media-body">
+                        <h5 class="mt-0">Another Person</h5>
+                        Great metrics!!!
+                    </div>
+                </div>
+
+                <div class="media mt-4">
+                    <img class="d-flex mr-3 rounded-circle">
+                    <div class="media-body">
+                        <h5 class="mt-0">Hi</h5>
+                        Our groups have become 20% more efficient.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <br>
+
+
+
+
+    </div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; FLTV 2018</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- jQuery and Javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="Assets/js/firebaseappinit.js"></script>
+    <script src="Assets/js/blogfirebaseapp.js"></script>
+</body>
+
+</html>

@@ -8,24 +8,6 @@
     <title>FLTV Questions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel='stylesheet' href='style.css'>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-
-        td,
-        th {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        th:empty {
-            border: 0;
-        }
-    </style>
-
-
-
 </head>
 
 <body>
@@ -33,6 +15,57 @@
         <h2 class="text-center" id="title">
             <strong>FLTV</strong>
         </h2>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark background-color: #e3f2fd;">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"></a>
+    
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <a class="nav-link" href="index.html"><strong>Home</strong></a>
+                            </li>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+    
+                                    <div class="collapse navbar-collapse" id="navbarResponsive">
+    
+    
+                                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item active">
+                                                    <a class="nav-link" href="contact.html">Contact</a>
+                                                </li>
+                                                <div class="collapse navbar-collapse" id="navbarResponsive">
+                                                    <ul class="navbar-nav ml-auto">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="blog.html">Blog</a>
+                                                        </li>
+                                                    </ul>
+                                            </ul>
+                                </ul>
+                        </ul>
+                        </ul>
+                        </ul>
+                        </div>
+                        </div>
+        </nav>
+    
+
+    <div class="card">
+        <div class="card-body">
+            <p>3 Things To Know:</p>
+            <ol>
+                <li> Takes Less Than 10 Minutes</li>
+                <li> Be Honest With Yourself</li>
+                <li> Try Not To Leave Neutral Answers</li>
+            </ol>
+        </div>
     </div>
 
     <div id="page-wrap">
@@ -49,8 +82,8 @@
                     <th></th>
                 </tr>
             </thead>
-            <tr style>
-                <td>Makes List</td>
+            <tr class="chosen-select" id="q1">
+                <td>Makes Lists</td>
                 <td>
                     <input type="radio" name="row-1" data-col="1">
                 </td>
@@ -68,7 +101,7 @@
                 </td>
                 <td>Relies On Memory</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q2">
                 <td>Sceptical</td>
                 <td>
                     <input type="radio" name="row-2" data-col="1">
@@ -87,7 +120,7 @@
                 </td>
                 <td>Wants To Believe</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q3">
                 <td>Bored By Time Alone</td>
                 <td>
                     <input type="radio" name="row-3" data-col="1">
@@ -106,7 +139,7 @@
                 </td>
                 <td>Needs Time Alone</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q4">
                 <td>Accepts Things As They Are</td>
                 <td>
                     <input type="radio" name="row-4" data-col="1">
@@ -125,7 +158,7 @@
                 </td>
                 <td>Unsatisfied With The Way Things Are</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q5">
                 <td>Keeps A Clean Room</td>
                 <td>
                     <input type="radio" name="row-5" data-col="1">
@@ -144,7 +177,7 @@
                 </td>
                 <td>Just Puts Stuff Where Ever</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q6">
                 <td>Thinks Robotic Is An Insult</td>
                 <td>
                     <input type="radio" name="row-6" data-col="1">
@@ -163,7 +196,7 @@
                 </td>
                 <td>Strives To Have A Mechanical Mind</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q7">
                 <td>Energetic</td>
                 <td>
                     <input type="radio" name="row-7" data-col="1">
@@ -182,7 +215,7 @@
                 </td>
                 <td>Mellow</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q8">
                 <td>Prefer To Take Mutlitple Choice Exam</td>
                 <td>
                     <input type="radio" name="row-8" data-col="1">
@@ -201,7 +234,7 @@
                 </td>
                 <td>Prefer To Take An Essay Exam</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q9">
                 <td>Chaotic</td>
                 <td>
                     <input type="radio" name="row-9" data-col="1">
@@ -220,7 +253,7 @@
                 </td>
                 <td>Organized</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q10">
                 <td>Easily Hurt</td>
                 <td>
                     <input type="radio" name="row-10" data-col="1">
@@ -239,7 +272,7 @@
                 </td>
                 <td>Thick Skinned</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q11">
                 <td>Works Best In Groups</td>
                 <td>
                     <input type="radio" name="row-11" data-col="1">
@@ -258,7 +291,7 @@
                 </td>
                 <td>Works Best Alone</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q12">
                 <td>Focused On The Present</td>
                 <td>
                     <input type="radio" name="row-12" data-col="1">
@@ -277,7 +310,7 @@
                 </td>
                 <td>Focused On The Future</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q13">
                 <td>Plans Far Ahead</td>
                 <td>
                     <input type="radio" name="row-13" data-col="1">
@@ -296,7 +329,7 @@
                 </td>
                 <td>Plans At The Last Minute</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q14">
                 <td>Wants People'Respect</td>
                 <td>
                     <input type="radio" name="row-14" data-col="1">
@@ -315,7 +348,7 @@
                 </td>
                 <td>Wants Their Love</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q15">
                 <td>Gets Worn Out By Parties</td>
                 <td>
                     <input type="radio" name="row-15" data-col="1">
@@ -334,7 +367,7 @@
                 </td>
                 <td>Gets Fired Up By Parties</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q16">
                 <td>Fits In</td>
                 <td>
                     <input type="radio" name="row-16" data-col="1">
@@ -353,7 +386,7 @@
                 </td>
                 <td>Stands Out</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q17">
                 <td>Keeps Options Open</td>
                 <td>
                     <input type="radio" name="row-17" data-col="1">
@@ -372,7 +405,7 @@
                 </td>
                 <td>Commits</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q18">
                 <td>Wants To Be Good At Fixing Things</td>
                 <td>
                     <input type="radio" name="row-18" data-col="1">
@@ -391,7 +424,7 @@
                 </td>
                 <td>Wants To Be Good At Fixing People</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q19">
                 <td>Talks More</td>
                 <td>
                     <input type="radio" name="row-19" data-col="1">
@@ -410,7 +443,7 @@
                 </td>
                 <td>Listen More</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q20">
                 <td>When Describing An Event, Will Tell People What Happened</td>
                 <td>
                     <input type="radio" name="row-20" data-col="1">
@@ -429,7 +462,7 @@
                 </td>
                 <td>When Describing An Event, Will Tell People What It Meant</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q21">
                 <td>Gets Work Done Right Away</td>
                 <td>
                     <input type="radio" name="row-21" data-col="1">
@@ -448,7 +481,7 @@
                 </td>
                 <td>Procastinates</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q22">
                 <td>Follows The Heart</td>
                 <td>
                     <input type="radio" name="row-22" data-col="1">
@@ -467,7 +500,7 @@
                 </td>
                 <td>Follows The Head</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q23">
                 <td>Stays At Home</td>
                 <td>
                     <input type="radio" name="row-23" data-col="1">
@@ -486,7 +519,7 @@
                 </td>
                 <td>Goes Out On The Town</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q24">
                 <td>Wants The Big Picture</td>
                 <td>
                     <input type="radio" name="row-24" data-col="1">
@@ -505,7 +538,7 @@
                 </td>
                 <td>Wants The Details</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q25">
                 <td>Improvises</td>
                 <td>
                     <input type="radio" name="row-25" data-col="1">
@@ -524,7 +557,7 @@
                 </td>
                 <td>Prepares</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q26">
                 <td>Bases Morality On Justice</td>
                 <td>
                     <input type="radio" name="row-26" data-col="1">
@@ -543,7 +576,7 @@
                 </td>
                 <td>Bases Morality On Compassion</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q27">
                 <td>Finds It Difficult To Yell Very Loudly</td>
                 <td>
                     <input type="radio" name="row-27" data-col="1">
@@ -562,7 +595,7 @@
                 </td>
                 <td>Yelling To Others When They Are Far Away Comes Naturally</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q28">
                 <td>Theoretical</td>
                 <td>
                     <input type="radio" name="row-28" data-col="1">
@@ -581,7 +614,7 @@
                 </td>
                 <td>Empirical</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q29">
                 <td>Works Hard</td>
                 <td>
                     <input type="radio" name="row-29" data-col="1">
@@ -600,7 +633,7 @@
                 </td>
                 <td>Plays Hard</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q30">
                 <td>Uncomfortable With Emotions</td>
                 <td>
                     <input type="radio" name="row-30" data-col="1">
@@ -619,7 +652,7 @@
                 </td>
                 <td>Values Emmotions</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q31">
                 <td>Likes To Perform In Front Of Other People</td>
                 <td>
                     <input type="radio" name="row-31" data-col="1">
@@ -638,7 +671,7 @@
                 </td>
                 <td>Avoids Public Speaking</td>
             </tr>
-            <tr>
+            <tr class="chosen-select" id="q32">
                 <td>Likes To Know, "WHO?", "WHAT?". "WHEN?"</td>
                 <td>
                     <input type="radio" name="row-32" data-col="1">
@@ -660,11 +693,13 @@
             <tr>
         </table>
 
-    </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
 
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-      </div>
+
+
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="paging.js"></script>
@@ -675,17 +710,6 @@
                 limit: 12
             });
         });
-    
-        // $(function () {
-        //     var col, el;
-
-        //     $("input[type=radio]").click(function () {
-        //         el = $(this);
-        //         col = el.data("col");
-        //         $("input[data-col=" + col + "]").prop("checked", false);
-        //         el.prop("checked", true);
-        //     });
-        // });
     </script>
 
 
