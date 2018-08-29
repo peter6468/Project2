@@ -2,7 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => {
     const SurveyAxis  = sequelize.define('survey_axis', {
-        name: DataTypes.STRING
+        shortName: DataTypes.STRING,
+        longName: DataTypes.STRING
     });
     
     SurveyAxis.associate = (models) => {
