@@ -6,12 +6,15 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
+// app.use(express.static('styles'));
+// app.use('/static', express.static('public'));
+
 
 // Handlebars
 app.engine(
