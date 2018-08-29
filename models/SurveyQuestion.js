@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     
     SurveyQuestion.associate = (models) => {
         SurveyQuestion.belongsToMany(models.user, { through: models.user_answer});
+        SurveyQuestion.belongsTo(models.survey_axis);
+        SurveyQuestion.hasMany(models.user_answer);
     }    
 
     return SurveyQuestion;
