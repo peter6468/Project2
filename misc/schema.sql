@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS chrt;
 CREATE DATABASE chrt;
 
+
 -- NOTE - BEFORE RUNNING THE BELOW STATEMENTS, RUN THE APPLICATION TO CREATE THE TABLES
 
 -- survey data
@@ -80,3 +81,4 @@ VALUES (4, current_timestamp(), current_timestamp(), 1, 1),
        (1, current_timestamp(), current_timestamp(), 4, 1),
        (5, current_timestamp(), current_timestamp(), 5, 1),
        (5, current_timestamp(), current_timestamp(), 6, 1);
+
