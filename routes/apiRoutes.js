@@ -85,8 +85,8 @@ module.exports = (app) => {
         res.json(data);
         });
   })
-    
-  // Get all groups
+  
+  // get all groups
   app.get("/api/group", (req, res) => {
     db.user_group.findAll({}).then(data => {
       res.json(data);
@@ -135,31 +135,33 @@ module.exports = (app) => {
 
   // get a all answers for a specific user in a specific group by ids
   app.get("/api/group/:groupid/user/:userid/answer", (req, res) => {
-    db.user.findAll(
-      { where: { id: req.params.userid },
-        include: [{ model: db.user_answer,
-                    include: [{ model: db.survey_question }] 
-                  }, { model: db.user_group,
-                       where: { id: req.params.groupid }
-        }]
+    db.user_answer.findAll(
+      { where: { userid: req.params.userid },
+        include: [{ model: db.user,
+                    include: [{ model: db.user_group,
+                                where: { id: req.params.groupid } 
+                    }] 
+                  }, { model: db.survey_question,
+                       include: [{ model: db.survey_axis, 
+                                   include: [{ model: db.survey }] 
+                                }] 
+                  }]
       }).then(data => {
-      res.json(data);
+        res.json(data);
     });
   });
   
 
- // get a all answers for a specific user in a specific group by ids
- app.get("/api/group/:groupid/user/:userid/:sur", (req, res) => {
-  db.user.findOne(
-    { where: { id: req.params.userid },
-      include: [{
-        model: db.user_group,
-        where: { id: req.params.groupid }
-    }]
-  }).then(data => {
-    res.json(data);
+  // post new answer
+  app.post("/api/group/:groupid/user/:userid/answer/:answerid/:value", (req, res) => {
+    let answerVal = req.params.value;
+    db.user_answer.findOrCreate({ where: [{userid: req.params.userid }, 
+                                { surveyquestionid: req.params.answerid }, 
+                                { value: answerVal }]})
+      .then(data => {
+        res.json(data);
+    });
   });
-});
 
 };
 
