@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     
     User.associate = (models) => {
         User.belongsToMany(models.survey_question, { through: models.user_answer});
-        
+        User.belongsTo(models.user_group);
+        User.hasMany(models.user_answer);
     }
     
     return User;

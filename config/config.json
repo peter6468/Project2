@@ -2,7 +2,11 @@
   "development": {
     "username": "root",
     "password": "root",
+<<<<<<< Updated upstream
     "database": "chrt",
+=======
+    "database": "exampledb",
+>>>>>>> Stashed changes
     "host": "localhost",
     "dialect": "mysql"
   },
