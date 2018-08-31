@@ -165,6 +165,4 @@ module.exports = (app) => {
 
 };
 
-=======
-};
 

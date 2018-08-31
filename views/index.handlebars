@@ -1,89 +1,4 @@
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('#tableData').paging({
-                limit: 12
-            });
-        });
 
-        
-(function($) {
-    $(function() {
-        $.widget("zpd.paging", {
-            options: {
-                limit: 12,
-                rowDisplayStyle: 'block',
-                activePage: 0,
-                rows: []
-            },
-            _create: function() {
-                var rows = $("tbody", this.element).children();
-                this.options.rows = rows;
-                this.options.rowDisplayStyle = rows.css('display');
-                var nav = this._getNavBar();
-                this.element.after(nav);
-                this.showPage(0);
-            },
-            _getNavBar: function() {
-                var rows = this.options.rows;
-                var nav = $('<div>', {class: 'paging-nav'});
-                for (var i = 0; i < Math.ceil(rows.length / this.options.limit); i++) {
-                    this._on($('<a>', {
-                        href: '#',
-                        text: (i + 1),
-                        "data-page": (i)
-                    }).appendTo(nav),
-                            {click: "pageClickHandler"});
-                }
-                //create previous link
-                this._on($('<a>', {
-                    href: '#',
-                    text: '<<',
-                    "data-direction": -1
-                }).prependTo(nav),
-                        {click: "pageStepHandler"});
-                //create next link
-                this._on($('<a>', {
-                    href: '#',
-                    text: '>>',
-                    "data-direction": +1
-                }).appendTo(nav),
-                        {click: "pageStepHandler"});
-                return nav;
-            },
-            showPage: function(pageNum) {
-                var num = pageNum * 1; //it has to be numeric
-                this.options.activePage = num;
-                var rows = this.options.rows;
-                var limit = this.options.limit;
-                for (var i = 0; i < rows.length; i++) {
-                    if (i >= limit * num && i < limit * (num + 1)) {
-                        $(rows[i]).css('display', this.options.rowDisplayStyle);
-                    } else {
-                        $(rows[i]).css('display', 'none');
-                    }
-                }
-            },
-            pageClickHandler: function(event) {
-                event.preventDefault();
-                $(event.target).siblings().attr('class', "");
-                $(event.target).attr('class', "selected-page");
-                var pageNum = $(event.target).attr('data-page');
-                this.showPage(pageNum);
-            },
-            pageStepHandler: function(event) {
-                event.preventDefault();
-                //get the direction and ensure it's numeric
-                var dir = $(event.target).attr('data-direction') * 1;
-                var pageNum = this.options.activePage + dir;
-                //if we're in limit, trigger the requested pages link
-                if (pageNum >= 0 && pageNum < this.options.rows.length) {
-                    $("a[data-page=" + pageNum + "]", $(event.target).parent()).click();
-                }
-            }
-        });
-    });
-})(jQuery);
-</script>
 
 
 <div id="home">
@@ -111,6 +26,10 @@
 </div>
 <br/>
   <div class="container">
+        <div id="surveyElement"></div>
+        <div id="surveyResult"></div>
+
+
 <div class="table-responsive">
         <table id="tableData" class="table table-bordered table-striped">
             <thead>
@@ -124,7 +43,13 @@
                     <th>Strongly Disagree</th>
                 </tr>
             </thead>
-            <tr style>
+
+<tr id="here_table"></tr>
+<tr id="here_table2"></tr>
+<tr id="here_table3"></tr>
+<tr id="here_table4"></tr>
+
+            {{!-- <tr style>
                 <td>Makes List</td>
                 <td>
                     <input type="radio" name="row-1" data-col="1">
@@ -732,7 +657,7 @@
                 </td>
                 <td>Likes To Know Why</td>
             </tr>
-            <tr>
+            <tr> --}}
         </table>
 <input class="btn btn-primary" type="submit" value="Submit">
     </div>
@@ -767,8 +692,74 @@
         //     });
         // });
  --}}
+{{!-- var json = {
+    questions: [
+        {
+            type: "rating",
+            name: "satisfaction",
+            title: "How satisfied are you with the Product?",
+            minRateDescription: "Not Satisfied",
+            maxRateDescription: "Completely satisfied"
+        }
+    ]
+};
 
- 
+window.survey = new Survey.Model(json);
+
+survey
+    .onComplete
+    .add(function (result) {
+        document
+            .querySelector('#surveyResult')
+            .innerHTML = "result: " + JSON.stringify(result.data);
+    });
+
+$("#surveyElement").Survey({model: survey}); --}}
+
+ <script type="text/javascript">
+var row = $('<td>').addClass('survey').text("Makes List");
+    $('#here_table').append(row);
+
+    for (i = 0; i < 5; i++) {
+    var radioBtn = $('<td> <input type="radio" name="rbtnCount" /> </td>');
+  $('#here_table').append(radioBtn);
+}
+
+var row2 = $('<td>').addClass('survey').text("Relies On Memory");
+    $('#here_table').append(row2);
+
+
+
+var row3 = $('<td>').addClass('survey').text("Skeptical");
+    $('#here_table2').append(row3);
+
+    for (i = 0; i < 5; i++) {
+    var radioBtn2 = $('<td> <input type="radio" name="rbtnCount2" /> </td>');
+  $('#here_table2').append(radioBtn2);
+}
+
+var row4 = $('<td>').addClass('survey').text("Wants to Believe");
+    $('#here_table2').append(row4);
+
+
+
+var row9 = $('<td>').addClass('survey').text("Bored By Time Alone");
+    $('#here_table4').append(row9);
+
+    for (i = 0; i < 5; i++) {
+    var radioBtn4 = $('<td> <input type="radio" name="rbtnCount4" /> </td>');
+  $('#here_table4').append(radioBtn4);
+}
+
+var row10 = $('<td>').addClass('survey').text("Needs Time Alone");
+    $('#here_table4').append(row10);
+
+    
+
+    
+
+
+</script>
 
 
 
