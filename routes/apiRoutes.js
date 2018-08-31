@@ -166,3 +166,27 @@ module.exports = (app) => {
 };
 
 
+
+//new routes made by Peter 8/30
+// Basic route that sends the user first to the AJAX Page
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "landingpage"));
+});
+
+app.get("/login", function(req, res) {
+  res.sendFile(path.join(__dirname, "login"));
+});
+
+app.get("/:userid/dashboard", function(req, res) {
+  res.sendFile(path.join(__dirname, "useriddashboard"));
+});
+
+app.get("/:userid/creategroup", function(req, res) {
+  res.sendFile(path.join(__dirname, "useridcreategroup"));
+});
+
+app.get("/:userid/groupsurvey", function(req, res) {
+  res.sendFile(path.join(__dirname, "useridgroupsurvey"));
+});
+
+
