@@ -58,27 +58,45 @@ VALUES  ( 1, 'Makes List', 'Relies On Memory', FALSE, current_timestamp(), curre
 
 -- dummy user and answer data
 
-INSERT INTO `chrt`.`user_groups` (`name`, `admin_email`, `anonymous`, `createdAt`, `updatedAt`)
-VALUES ('Testing Group', 'testytesterson@testing.com', FALSE, current_timestamp(), current_timestamp());
+INSERT INTO `chrt`.`groups` (`name`, `anonymous`, `createdAt`, `updatedAt`)
+VALUES ('Testing Group', FALSE, current_timestamp(), current_timestamp());
 
-INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`, `userGroupId`)
-VALUES ('Fraser', 'ftorning@gmail.com', current_timestamp(), current_timestamp(), 1);
+INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`)
+VALUES ('Fraser', 'ftorning@gmail.com', current_timestamp(), current_timestamp());
 
-INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`, `userGroupId`)
-VALUES ('Peter', 'peter@gmail.com', current_timestamp(), current_timestamp(), 1);
+INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`)
+VALUES ('Peter', 'peter@gmail.com', current_timestamp(), current_timestamp());
 
-INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`, `userGroupId`)
-VALUES ('Jacob', 'jacob@gmail.com', current_timestamp(), current_timestamp(), 1);
+INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`)
+VALUES ('Jacob', 'jacob@gmail.com', current_timestamp(), current_timestamp());
 
-INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`, `userGroupId`)
-VALUES ('Justin', 'justin@gmail.com', current_timestamp(), current_timestamp(), 1);
+INSERT INTO `chrt`.`users` (`name`, `email`, `createdAt`, `updatedAt`)
+VALUES ('Justin', 'justin@gmail.com', current_timestamp(), current_timestamp());
 
+INSERT INTO `chrt`.`group_users` (`createdAt`, `updatedAt`, `groupId`, `userId`)
+VALUES (current_timestamp(), current_timestamp(), 1, 1),
+	   (current_timestamp(), current_timestamp(), 1, 2),
+       (current_timestamp(), current_timestamp(), 1, 3),
+       (current_timestamp(), current_timestamp(), 1, 4);
 
-INSERT INTO `chrt`.`user_answers` (`value`, `createdAt`, `updatedAt`, `surveyQuestionId`, `userId`)
+INSERT INTO `chrt`.`group_user_answers` (`value`, `createdAt`, `updatedAt`, `surveyQuestionId`, `groupuserId`)
 VALUES (4, current_timestamp(), current_timestamp(), 1, 1),
        (3, current_timestamp(), current_timestamp(), 2, 1),
        (2, current_timestamp(), current_timestamp(), 3, 1),
        (1, current_timestamp(), current_timestamp(), 4, 1),
        (5, current_timestamp(), current_timestamp(), 5, 1),
-       (5, current_timestamp(), current_timestamp(), 6, 1);
-
+       (4, current_timestamp(), current_timestamp(), 1, 2),
+       (3, current_timestamp(), current_timestamp(), 2, 2),
+       (2, current_timestamp(), current_timestamp(), 3, 2),
+       (1, current_timestamp(), current_timestamp(), 4, 2),
+       (5, current_timestamp(), current_timestamp(), 5, 2),
+       (4, current_timestamp(), current_timestamp(), 1, 3),
+       (3, current_timestamp(), current_timestamp(), 2, 3),
+       (2, current_timestamp(), current_timestamp(), 3, 3),
+       (1, current_timestamp(), current_timestamp(), 4, 3),
+       (5, current_timestamp(), current_timestamp(), 5, 3),
+       (4, current_timestamp(), current_timestamp(), 1, 4),
+       (3, current_timestamp(), current_timestamp(), 2, 4),
+       (2, current_timestamp(), current_timestamp(), 3, 4),
+       (1, current_timestamp(), current_timestamp(), 4, 4),
+       (5, current_timestamp(), current_timestamp(), 5, 4);

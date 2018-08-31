@@ -10,4 +10,3 @@ config/
 .DS_Store
 
 npm-debug.log
-git
