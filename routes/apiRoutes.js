@@ -2,6 +2,8 @@ var db = require("../models");
 
 module.exports = (app) => {
 
+  // SURVEY ROUTES
+
   // all surveys
   app.get("/api/survey", (req, res) => {
     db.survey.findAll({}).then(data => {
@@ -86,35 +88,97 @@ module.exports = (app) => {
         });
   })
   
-  // get all groups
-  app.get("/api/group", (req, res) => {
-    db.user_group.findAll({}).then(data => {
+
+
+  // USER ROUTES
+
+
+
+  // get all users
+  app.get("/api/user", (req, res) => {
+    db.user.findAll({}).then(data => {
       res.json(data);
     });
   });
 
-  // Create a new group
-  app.post("/api/group", (req, res) => {
-    db.user_group.create(req.body).then(data => {
+  // create a user
+  app.post("api/user", (req, res) => {
+    db.user.create(req.body).then(data => {
       res.json(data);
     });
   });
+
+  // get a specific user
+  app.get("/api/user/:userid", (req, res) => {
+    db.user.findOne({where: { id: req.params.userid }}).then(data => {
+      res.json(data);
+    });
+  });
+
+  // get all user groups
+  app.get("/api/user/:userid/group", (req, res) => {
+    db.user.findAll({where: { id: req.params.userid },
+                    include: [{model: db.group_user,
+                              include: [{model: db.group}]
+                            }]
+                    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // get a specific group for a specific user
+  app.get("/api/user/:userid/group/:groupid", (req, res) => {
+    db.user.findAll({where: { id: req.params.userid },
+                    include: [{model: db.group_user,
+                              include: [{model: db.group,
+                                         where: {id: req.params.groupid }
+                                        }]
+                            }]
+                    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // get all answers for a specific group for a specific user
+  app.get("/api/user/:userid/group/:groupid/answer", (req, res) => {
+    db.user.findAll({where: { id: req.params.userid },
+                    include: [{model: db.group_user,
+                              include: [{model: db.group,
+                                         where: {id: req.params.groupid }
+                                        }, {model: db.group_user_answer,
+                                            include: [{ model: db.survey_question,
+                                                        include: [{ model: db.survey_axis }]
+                                                      }]
+                                        }]
+                            }]
+                    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // GROUP ROUTES 
 
   // get group by id
   app.get("/api/group/:groupid", (req, res) => {
-    db.user_group.findOne({ where: { id: req.params.groupid } }).then(data => {
+    db.group.findOne({ where: { id: req.params.groupid } }).then(data => {
+      res.json(data);
+    });
+  });
+  
+  // Create a new group
+  app.post("/api/group", (req, res) => {
+    db.group.create(req.body).then(data => {
       res.json(data);
     });
   });
 
   // get all users of a specific group id
   app.get("/api/group/:groupid/user", (req, res) => {
-    db.user.findAll(
-      {
-        include: [{
-          model: db.user_group,
-          where: { id: req.params.groupid }
-      }]
+    db.group.findAll({
+      where: { id: req.params.groupid },
+      include: [{ model: db.group_user,
+                  include: [{ model: db.user }]
+                }]
     }).then(data => {
       res.json(data);
     });
@@ -126,67 +190,42 @@ module.exports = (app) => {
       { where: { id: req.params.userid },
         include: [{
           model: db.user_group,
-          where: { id: req.params.groupid }
+          where: { id: req.params.groupid },
+          include: [{ model: db.user }]
       }]
     }).then(data => {
       res.json(data);
     });
   });
 
-  // get a all answers for a specific user in a specific group by ids
-  app.get("/api/group/:groupid/user/:userid/answer", (req, res) => {
-    db.user_answer.findAll(
-      { where: { userid: req.params.userid },
-        include: [{ model: db.user,
-                    include: [{ model: db.user_group,
-                                where: { id: req.params.groupid } 
-                    }] 
-                  }, { model: db.survey_question,
-                       include: [{ model: db.survey_axis, 
-                                   include: [{ model: db.survey }] 
-                                }] 
-                  }]
-      }).then(data => {
-        res.json(data);
-    });
-  });
+  // // get a all answers for a specific user in a specific group by ids
+  // app.get("/api/group/:groupid/user/:userid/answer", (req, res) => {
+  //   db.user_answer.findAll(
+  //     { where: { userid: req.params.userid },
+  //       include: [{ model: db.user,
+  //                   include: [{ model: db.user_group,
+  //                               where: { id: req.params.groupid } 
+  //                   }] 
+  //                 }, { model: db.survey_question,
+  //                      include: [{ model: db.survey_axis, 
+  //                                  include: [{ model: db.survey }] 
+  //                               }] 
+  //                 }]
+  //     }).then(data => {
+  //       res.json(data);
+  //   });
+  // });
   
 
-  // post new answer
-  app.post("/api/group/:groupid/user/:userid/answer/:answerid/:value", (req, res) => {
-    let answerVal = req.params.value;
-    db.user_answer.findOrCreate({ where: [{userid: req.params.userid }, 
-                                { surveyquestionid: req.params.answerid }, 
-                                { value: answerVal }]})
-      .then(data => {
-        res.json(data);
-    });
-  });
-
+  // // post new answer
+  // app.post("/api/group/:groupid/user/:userid/answer/:answerid/:value", (req, res) => {
+  //   let answerVal = req.params.value;
+  //   db.user_answer.findOrCreate({ where: [{userid: req.params.userid }, 
+  //                               { surveyquestionid: req.params.answerid }, 
+  //                               { value: answerVal }]})
+  //     .then(data => {
+  //       res.json(data);
+  //   });
+  // });
+ 
 };
-
-
-
-//new routes made by Peter 8/30
-// Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "landingpage"));
-});
-
-app.get("/login", function(req, res) {
-  res.sendFile(path.join(__dirname, "login"));
-});
-
-app.get("/:userid/dashboard", function(req, res) {
-  res.sendFile(path.join(__dirname, "useriddashboard"));
-});
-
-app.get("/:userid/creategroup", function(req, res) {
-  res.sendFile(path.join(__dirname, "useridcreategroup"));
-});
-
-app.get("/:userid/groupsurvey", function(req, res) {
-  res.sendFile(path.join(__dirname, "useridgroupsurvey"));
-});
-
-
