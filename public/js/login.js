@@ -44,7 +44,7 @@ function loginProcess(email) {
 
 submitBtn.on("click", () => {
     event.preventDefault();
-    loginProcess(inputEmail.val()).then((result) => {
+    loginProcess(inputEmail.val().toLowerCase()).then((result) => {
         console.log('here');
         console.log(result);
         if (result) {
