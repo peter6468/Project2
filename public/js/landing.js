@@ -1,0 +1,1 @@
+console.log("landing page js loaded");
