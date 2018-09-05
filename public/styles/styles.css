@@ -20,7 +20,9 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eae6Da;
+  /* background-color: #eae6Da; */
+  /* Can change back to above if needed */
+  background-color: #fff;
 }
 
 .form-signin {
@@ -56,4 +58,15 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+#login{
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+a:link {
+  text-decoration: none;
 }
