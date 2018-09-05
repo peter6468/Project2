@@ -102,7 +102,7 @@ module.exports = (app) => {
   });
 
   // create a user
-  app.post("api/user", (req, res) => {
+  app.post("/api/user/newuser", (req, res) => {
     db.user.create(req.body).then(data => {
       res.json(data);
     });

@@ -2,6 +2,7 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
 
 var db = require("./models");
 
@@ -12,6 +13,12 @@ var PORT = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use(session({
+  secret: process.env.session_secret,
+  resave: true,
+  saveUninitialized: true
+}));
+
 // app.use(express.static('styles'));
 // app.use('/static', express.static('public'));
 
