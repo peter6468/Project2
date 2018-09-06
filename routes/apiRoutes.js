@@ -198,6 +198,19 @@ module.exports = (app) => {
     });
   });
 
+  app.get("/api/groupuser/user/:userid/group/:groupid", (req, res) => {
+    db.group_user.findOne(
+      { where: { userid: req.params.userid,
+                 groupid: req.params.groupid 
+                }
+      }).then(data => {
+        res.json(data);
+      });
+  });
+
+  
+
+
   // // get a all answers for a specific user in a specific group by ids
   // app.get("/api/group/:groupid/user/:userid/answer", (req, res) => {
   //   db.user_answer.findAll(

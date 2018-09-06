@@ -44,16 +44,18 @@ function loginProcess(email) {
 
 submitBtn.on("click", () => {
     event.preventDefault();
-    loginProcess(inputEmail.val()).then((result) => {
+    loginProcess(inputEmail.val().toLowerCase()).then((result) => {
         console.log('here');
         console.log(result);
         if (result) {
+            console.log(result);
             $.ajax({
                 url: "login",
                 type: "POST",
                 data: result
             }).then(() => {
-                window.location.replace('/dashboard');
+                console.log('wtf');
+                document.location.replace('/dashboard');
             })
         }
     });

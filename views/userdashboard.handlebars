@@ -1,1 +1,23 @@
 <h1>User Dashboard</h1>
+
+<h3>Hi {{ user.name }}</h3>
+
+<button id="create-survey-btn" class="btn btn-lg">Create a Survey</button>
+
+<h3>My Group Surveys</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Group Name</th>
+      <th scope="col">Survey</th>
+      <th scope="col">Complete Survey</th>
+      <th scope="col">See Results</th>
+    </tr>
+  </thead>
+  <tbody id="groups-tbl">
+  </tbody>
+</table>
+<script>
+    let userid = "{{ user.id }}";
+</script>
+<script src="js/dashboard.js"></script>
