@@ -73,7 +73,7 @@ module.exports = (app) => {
       }).then(data => {
         res.json(data);
         });
-  })
+  });
 
   // specific question for a specific survey by ids
   app.get("/api/survey/:surveyid/question/:questionid", (req, res) => {
@@ -208,6 +208,14 @@ module.exports = (app) => {
       });
   });
 
+  app.get("/api/groupuser/:groupuserid", (req, res) => {
+    db.group_user.findOne(
+      { where: { id: req.params.groupuserid }
+      }).then(data => {
+        res.json(data);
+      });
+  });
+
   
 
 
@@ -230,15 +238,14 @@ module.exports = (app) => {
   // });
   
 
-  // // post new answer
-  // app.post("/api/group/:groupid/user/:userid/answer/:answerid/:value", (req, res) => {
-  //   let answerVal = req.params.value;
-  //   db.user_answer.findOrCreate({ where: [{userid: req.params.userid }, 
-  //                               { surveyquestionid: req.params.answerid }, 
-  //                               { value: answerVal }]})
-  //     .then(data => {
-  //       res.json(data);
-  //   });
-  // });
+  // post new answer
+  app.post("/api/groupuser/:groupuserid/question/:surveyquestionid/", (req, res) => {
+    let groupuserid = req.params.groupuserid;
+    let surveyquestionid = req.params.surveyquestionid;
+    let value = req.body;
+    db.group_user_answer.create().then(data => {
+      res.json(data);
+    });
+  });
  
 };
