@@ -70,3 +70,23 @@ body {
 a:link {
   text-decoration: none;
 }
+
+#survey-table-body input {
+  margin: 10px 5px 0px 5px;
+}
+
+.radio{
+  -webkit-appearance:button;
+  -moz-appearance:button;
+  appearance:button;
+  border:4px solid #ccc;
+  border-top-color:#bbb;
+  border-left-color:#bbb;
+  background:#fff;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+}
+.radio:checked{
+  border:12px solid #4099ff;
+}
