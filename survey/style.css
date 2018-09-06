@@ -1,7 +1,8 @@
 * { margin: 0; padding: 0; }
 body { 
     font: 14px Georgia, serif;
-    background-color: #eae6Da;
+    /* background-color: #eae6Da; */
+    background-color: #fff; 
  }
 
  .card {
@@ -60,9 +61,9 @@ th:empty {
     font-weight: bold;
   }
 
-
-
-  
+  .login{
+    font-weight: bold;
+  }
 
   @media 
   only screen and (max-width: 760px),
@@ -73,3 +74,4 @@ th:empty {
       display: block; 
     }
     
+  }
