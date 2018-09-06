@@ -19,43 +19,43 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark background-color: #e3f2fd;">
-            <div class="container">
-                <a class="navbar-brand" href="index.html"></a>
-    
-                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <div class="container">
+            <a class="navbar-brand" href="index.html"></a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <a class="nav-link" href="index.html"><strong>Home</strong></a>
+                    </li>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
-                            <a class="nav-link" href="index.html"><strong>Home</strong></a>
-                            </li>
+
                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav ml-auto">
-    
-                                    <div class="collapse navbar-collapse" id="navbarResponsive">
-    
-    
+
+
+                                <div class="collapse navbar-collapse" id="navbarResponsive">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="contact.html">Contact</a>
+                                        </li>
                                         <div class="collapse navbar-collapse" id="navbarResponsive">
                                             <ul class="navbar-nav ml-auto">
-                                                <li class="nav-item active">
-                                                    <a class="nav-link" href="contact.html">Contact</a>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="blog.html">Blog</a>
                                                 </li>
-                                                <div class="collapse navbar-collapse" id="navbarResponsive">
-                                                    <ul class="navbar-nav ml-auto">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="blog.html">Blog</a>
-                                                        </li>
-                                                    </ul>
                                             </ul>
-                                </ul>
+                                    </ul>
                         </ul>
-                        </ul>
-                        </ul>
-                        </div>
-                        </div>
-        </nav>
-    
+                </ul>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
     <div class="card">
         <div class="card-body">
@@ -104,19 +104,19 @@
             <tr class="chosen-select" id="q2">
                 <td>Sceptical</td>
                 <td>
-                    <input type="radio" name="row-2" data-col="1">
+                    <input type="radio" value="1" name="row-2" data-col="1">
                 </td>
                 <td>
-                    <input type="radio" name="row-2" data-col="2">
+                    <input type="radio" value="2" name="row-2" data-col="2">
                 </td>
                 <td>
-                    <input type="radio" name="row-2" data-col="3">
+                    <input type="radio" value="3" name="row-2" data-col="3">
                 </td>
                 <td>
-                    <input type="radio" name="row-2" data-col="4">
+                    <input type="radio" value="4" name="row-2" data-col="4">
                 </td>
                 <td>
-                    <input type="radio" name="row-2" data-col="5">
+                    <input type="radio" value="5" name="row-2" data-col="5">
                 </td>
                 <td>Wants To Believe</td>
             </tr>
@@ -694,7 +694,8 @@
         </table>
 
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100">25%</div>
         </div>
 
 
@@ -705,78 +706,22 @@
     <script src="paging.js"></script>
 
     <script type="text/javascript">
+
         $(document).ready(function () {
-            $('#tableData').paging({
-                limit: 12
+            $(":input").on("click", function () {
+                var userData = {
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    scores: [
+                        $("input[type=radio][name=row-1]:checked").val(),
+                        $("input[type=radio][name=row-2]:checked").val(),
+                    ]
+                   
+                }
+                console.log(userData)
+
             });
         });
-
-    var userData = {
-    name: $("#name").val(),
-    email: $("#email").val(),
-    scores: [
-      $("#q1").val(),
-      $("#q2").val(),
-      $("#q3").val(),
-      $("#q4").val(),
-      $("#q5").val(),
-      $("#q6").val(),
-      $("#q7").val(),
-      $("#q8").val(),
-      $("#q9").val(),
-      $("#q10").val(),
-      $("#q11").val(),
-      $("#q12").val(),
-      $("#q13").val(),
-      $("#q14").val(),
-      $("#q15").val(),
-      $("#q16").val(),
-      $("#q17").val(),
-      $("#q18").val(),
-      $("#q19").val(),
-      $("#q20").val(),
-      $("#q21").val(),
-      $("#q22").val(),
-      $("#q23").val(),
-      $("#q24").val(),
-      $("#q25").val(),
-      $("#q26").val(),
-      $("#q27").val(),
-      $("#q28").val(),
-      $("#q29").val(),
-      $("#q30").val(),
-      $("#q31").val(),
-      $("#q32").val(),
-    ]
-  };
-  console.log(userData)
-
-//   var orm = require('../config/orm.js');
-
-//   var USERDATA = {
-//       all: function(cb) {
-//           //inserting burgers as our table input, running function of res a cb
-//           //wh/wil be sent into our burgers_controller.js
-//           orm.all('userdata', function(res) {
-//               cb(res);
-//           })
-//       },
- 
-//       update: function(id,cb) {
-//           orm.update('userdata', id, cb)
-//       },
- 
-//       create: function(name, price, cb) {
-//           orm.create('userdata', name, email, q1, value, cb);
-//       }
-//   }
- 
-//   module.exports = USERDATA;
-
-
-
-
-
     </script>
 
 
