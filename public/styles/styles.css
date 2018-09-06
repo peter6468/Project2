@@ -75,6 +75,7 @@ a:link {
   margin: 10px 5px 0px 5px;
 }
 
+
 .radio{
   -webkit-appearance:button;
   -moz-appearance:button;
@@ -87,6 +88,12 @@ a:link {
   height:25px;
   border-radius:50%;
 }
+
+.radio:focus{
+  outline:none;
+}
+
+
 .radio:checked{
   border:12px solid #4099ff;
 }
