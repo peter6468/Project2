@@ -22,18 +22,23 @@ $.ajax({
         let radioOne = $('<input>');
         radioOne.addClass("form-check-input radio");
         radioOne.attr({"type": "radio", "name": (data[i].id), "value": 1, "data-question": data[i].id});
+        // radioOne.prop('required', 'true');
         let radioTwo = $('<input>');
         radioTwo.addClass("form-check-input radio");
         radioTwo.attr({"type": "radio", "name": (data[i].id), "value": 2, "data-question": data[i].id});
+        // radioTwo.prop('required', 'true');
         let radioThree = $('<input>');
         radioThree.addClass("form-check-input radio");
         radioThree.attr({"type": "radio", "name": (data[i].id), "value": 3, "data-question": data[i].id});
+        // radioThree.prop('required', 'true');
         let radioFour = $('<input>');
         radioFour.addClass("form-check-input radio");
         radioFour.attr({"type": "radio", "name": (data[i].id), "value": 4, "data-question": data[i].id});
+        // radioFourOne.prop('required', 'true');
         let radioFive = $('<input>');
         radioFive.addClass("form-check-input radio");
         radioFive.attr({"type": "radio", "name": (data[i].id), "value": 5, "data-question": data[i].id});
+        // radioFive.prop('required', 'true');
         
         radioGrp.append([radioOne, radioTwo, radioThree, radioFour, radioFive]);
         options.append(radioGrp);
@@ -50,14 +55,23 @@ $.ajax({
 });
 
 surveySubmit.on('click', () => {
-    console.log('click');
-    var res = $('.radio:checked');
+    let data = [];
+    let res = $('.radio:checked');
     for (let i = 0; i < res.length; i++) {
-        console.log(res[i]);
-        let questionid = res[i].name;
-        let value = res[i].value;
-        console.log("questionid = " + questionid);
-        console.log("value = " + value);       
-        
+        let answer = {
+            "groupUserId": groupuser,
+            "surveyQuestionId": res[i].name,
+            "value": res[i].value
+        }
+        console.log(answer);
+        data.push(answer);
     }
+    $.ajax({
+        url: "/api/groupuser/" + groupuser + "/question",
+        type: "POST",
+        data: { 'postData': JSON.stringify(data) }
+    }).then((res) => {
+        console.log(res);
+        window.location.replace('/dashboard');
+    })
 })

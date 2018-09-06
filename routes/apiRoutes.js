@@ -238,14 +238,15 @@ module.exports = (app) => {
   // });
   
 
-  // post new answer
-  app.post("/api/groupuser/:groupuserid/question/:surveyquestionid/", (req, res) => {
-    let groupuserid = req.params.groupuserid;
-    let surveyquestionid = req.params.surveyquestionid;
-    let value = req.body;
-    db.group_user_answer.create().then(data => {
-      res.json(data);
-    });
+  // post answers
+  app.post("/api/groupuser/:groupuserid/question", (req, res) => {
+    let data = JSON.parse(req.body.postData);
+    console.log(data);
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i]);
+      db.group_user_answer.create(data[i]);
+    }
+    res.sendStatus(200);
   });
  
 };
