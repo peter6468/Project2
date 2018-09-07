@@ -97,3 +97,7 @@ a:link {
 .radio:checked{
   border:12px solid #4099ff;
 }
+
+.borderless td, .borderless th {
+  border: none;
+}
