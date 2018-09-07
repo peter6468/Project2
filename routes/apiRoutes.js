@@ -113,10 +113,17 @@ module.exports = (app) => {
 
   // create a user
   app.post("/api/user/newuser", (req, res) => {
-    db.user.create(req.body).then(data => {
+    db.user.findOrCreate({ where: { email: req.body.email }, defaults: { name: req.body.name } , }).then(data => {
       res.json(data);
     });
   });
+
+    // create a group user
+    app.post("/api/groupuser", (req, res) => {
+      db.group_user.findOrCreate({ where: { userId: req.body.userId, groupId: req.body.groupId }}).then(data => {
+        res.json(data);
+      });
+    });
 
   // get a specific user
   app.get("/api/user/:userid", (req, res) => {
