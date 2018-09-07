@@ -27,7 +27,7 @@ After they have sucessfully created an account or logged in, the user is redirec
 
 From here they can create, take or view previous results of a survey they've taken.
 
-If they choose to click "Create a Survey", they are presented with a screen to make the required adjustments to do so.
+If they choose to click "Create A New Survey", they are presented with a screen to make the required adjustments to do so.
 
 ![Image](public/images/file-5.png)
 
@@ -35,7 +35,7 @@ The creation of the survey will show up on the dashboard and allow the user to s
 
 ![Image](public/images/file-6.png)
 
-For testing purposes, a personality survey was created. Once clicked, this user would be presented with this scren.
+For testing purposes, a personality survey was created. Once clicked, this user would be presented with this screen.
 
 ![Image](public/images/file-7.png)
 
@@ -51,3 +51,4 @@ For testing purposes, a personality survey was created. Once clicked, this user 
 * [Express Session Module](https://www.npmjs.com/package/express-session)
 * [jQuery](https://jquery.com/)
 * [Font Awesome](https://fontawesome.com/)
+* [Keep Singing Font](https://www.1001fonts.com/keep-singing-font.html)
