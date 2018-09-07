@@ -1,3 +1,5 @@
 console.log("landing page js loaded");
 
-$('h1').css({"color": "red"});
+$('#submit').on('click', () => {
+    window.location.replace('/login');
+})
