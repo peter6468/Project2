@@ -10,6 +10,14 @@
   background-color: #fff;
 }
 
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 0px;
+}
+
 .navbar-expand .navbar-nav .nav-link {
   padding-right: .5rem;
   padding-left: .5rem;
