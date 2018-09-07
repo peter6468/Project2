@@ -1,8 +1,18 @@
 var db = require("../models");
+var getScore = require('../public/js/calcScore').getScore;
+
+// console.log('teeeeeesting ' + getScore('filler'));
 
 module.exports = (app) => {
 
   // SURVEY ROUTES
+
+  // calc score
+  app.post("/api/calcScore", (req, res) => {
+    let data = JSON.parse(req.body.answers);
+    let result = getScore(data);
+    res.json(result);
+  })
 
   // all surveys
   app.get("/api/survey", (req, res) => {
@@ -217,36 +227,35 @@ module.exports = (app) => {
   });
 
   
-
-
-  // // get a all answers for a specific user in a specific group by ids
-  // app.get("/api/group/:groupid/user/:userid/answer", (req, res) => {
-  //   db.user_answer.findAll(
-  //     { where: { userid: req.params.userid },
-  //       include: [{ model: db.user,
-  //                   include: [{ model: db.user_group,
-  //                               where: { id: req.params.groupid } 
-  //                   }] 
-  //                 }, { model: db.survey_question,
-  //                      include: [{ model: db.survey_axis, 
-  //                                  include: [{ model: db.survey }] 
-  //                               }] 
-  //                 }]
-  //     }).then(data => {
-  //       res.json(data);
-  //   });
-  // });
-  
-
   // post answers
   app.post("/api/groupuser/:groupuserid/question", (req, res) => {
     let data = JSON.parse(req.body.postData);
     console.log(data);
     for (let i = 0; i < data.length; i++) {
       console.log(data[i]);
-      db.group_user_answer.create(data[i]);
+      db.group_user_answer.upsert(data[i]);
     }
     res.sendStatus(200);
   });
+
+  app.get("/api/group/:groupid/answers", (req, res) => {
+    db.user.findAll({
+      include: [{
+        model: db.group_user,
+        where: { groupid: req.params.groupid },
+        include: [{
+          model: db.group_user_answer,
+          include: [{
+            model: db.survey_question,
+            include: [{
+              model: db.survey_axis
+            }]
+          }]
+        }, { model: db.group }] 
+      }]  
+    }).then(data => {
+      res.json(data);
+    })
+  })
  
 };
