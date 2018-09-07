@@ -5,30 +5,35 @@ console.log(groupuser);
 
 getGroupID(groupuser).then((data) => {
     getGroupResults(data).then((data) => {
-        console.log(data);
+        processedUsers = [];
         for (let i = 0; i < data.length; i++) {
             let userId = data[i].id;
+            let groupUserId = data[i].group_users[0].id;
             let userName = data[i].name;
             let groupName = data[i].group_users[0].group.name;
             let answersArray = data[i].group_users[0].group_user_answers;
             getUserScore(answersArray).then(data => {
-                console.log(userId);
-                console.log(userName);
-                console.log(groupName);
-                console.log(answersArray);
-                data['IE'] += 30;
-                data['SN'] += 12;
-                data['FT'] += 30;
-                data['JP'] += 18; 
-                personalitytype = '';
-                if (data['IE'] > 24) {
-                    personalitytype += 'E';
-                } else {
-                    personalitytype += 'I';
+                let personality = personalityType(data);
+                let results = data;
+                let user = {
+                    userId: userId,
+                    groupUserId: groupUserId,
+                    name: userName,
+                    group: groupName,
+                    personality: personality,
+                    data: results
                 }
+                processedUsers.push(user);
+                
             })
             
         }
+        console.log(processedUsers);
+
+        // create functions that use processedUsers and call them here
+
+        // for the current user, compare groupuser to groupUserId in processedUsers
+
     })
 })
 
@@ -68,48 +73,35 @@ function getUserScore(answerArray) {
     })
 }
 
-// $.ajax({
-//     url: "/api/groupuser/" + groupuser,
-//     type: "GET"
-// }).then((data) => {
-//     groupid = data.groupId;
-//     console.log(groupid);
-// });
+function personalityType(data) {
+    let personalitytype = '';
+    data['IE'] += 30;
+    data['SN'] += 12;
+    data['FT'] += 30;
+    data['JP'] += 18; 
+    if (data['IE'] > 24) {
+        personalitytype += 'E';
+    } else {
+        personalitytype += 'I';
+    }
 
+    if (data['SN'] > 24) {
+        personalitytype += 'N';
+    } else {
+        personalitytype += 'S';
+    }
 
+    if (data['FT'] > 24) {
+        personalitytype += 'T';
+    } else {
+        personalitytype += 'F';
+    }
 
-// $.ajax({
-//     url: "api/user/" + userid + "/group",
-//     type: "GET"
-// }).then((data) => {
-//     console.log(data)
-//     var groups = data[0].group_users; 
-//     for (let i = 0; i < groups.length; i++) {
-//         let row = $('<tr>');
-//         let groupfield = $('<td>');
-//         let surveyfield = $('<td>');
-//         let completefield = $('<td>');
-//         let resultsfield = $('<td>');
-//         let surveybtn = $('<button>');
-//         let resultbtn = $('<button>');
+    if (data['JP'] > 24) {
+        personalitytype += 'P';
+    } else {
+        personalitytype += 'J';
+    }
 
-//         groupfield.text(groups[i].group.name);
-//         surveyfield.text("CHRT");
-
-//         surveybtn.addClass("btn btn-success survey-btn");
-//         surveybtn.attr("data-surveygroupid", groups[i].group.id)
-//         surveybtn.text('Take Survey');
-//         completefield.append(surveybtn);
-
-//         resultbtn.addClass("btn btn-primary result-btn");
-//         resultbtn.attr("data-resultgroupid", groups[i].group.id);
-//         resultbtn.text('See Results');
-//         resultsfield.append(resultbtn);
-
-//         row.append([groupfield, surveyfield, completefield, resultsfield]);
-        
-//         $('#groups-tbl').append(row)
-       
-//         console.log(groups[i].group.name);
-//     }
-// });
+    return personalitytype;
+}
