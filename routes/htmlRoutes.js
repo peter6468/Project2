@@ -45,6 +45,10 @@ module.exports = function(app) {
       res.render("groupsurvey", { groupuser: req.session.groupuser });
   });
 
+  app.get("/about", checkSignIn, (req, res) => {
+      res.render("about");
+  });
+
   
 
   app.get("/:userid/:groupid/userresults", function(req, res) {
