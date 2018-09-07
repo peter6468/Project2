@@ -16,11 +16,16 @@ getGroupID(groupuser).then((data) => {
                 console.log(userName);
                 console.log(groupName);
                 console.log(answersArray);
-                data['JP'] += 30;
+                data['IE'] += 30;
                 data['SN'] += 12;
                 data['FT'] += 30;
                 data['JP'] += 18; 
-                console.log(data);
+                personalitytype = '';
+                if (data['IE'] > 24) {
+                    personalitytype += 'E';
+                } else {
+                    personalitytype += 'I';
+                }
             })
             
         }
