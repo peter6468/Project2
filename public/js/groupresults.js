@@ -105,3 +105,7 @@ function personalityType(data) {
 
     return personalitytype;
 }
+
+module.exports = { 
+    personalityType: personalityType,
+};
