@@ -1,7 +1,7 @@
 ## FLTV
 _A group oriented application designed to allow for surveys, namely but not limited to personality testing. For this instance, the testing survey is built off the [Open Extended Jungian Type Scale](https://openpsychometrics.org/tests/OEJTS/development/), an open source substitute to the Myers-Briggs Type Indicator, to show it's complete capabilities._
 
-Live Demo hosted on [Heroku](https://heroku.com/)
+[**Live Demo**](https://serene-taiga-32891.herokuapp.com/) hosted on [Heroku](https://heroku.com/)
 
 FLTV's objective is to allow the user to:
 1. Create their own account to login
@@ -52,3 +52,4 @@ For testing purposes, a personality survey was created. Once clicked, this user 
 * [jQuery](https://jquery.com/)
 * [Font Awesome](https://fontawesome.com/)
 * [Keep Singing Font](https://www.1001fonts.com/keep-singing-font.html)
+* [Twemoji](https://github.com/twitter/twemoji)
